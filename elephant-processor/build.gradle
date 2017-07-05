@@ -2,7 +2,7 @@ apply plugin: 'java'
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
-    compile project(":elephant")
+    compile 'co.herovitamin.elephant:elephant:0.5'
     compile 'com.squareup:javapoet:1.9.0'
 }
 
