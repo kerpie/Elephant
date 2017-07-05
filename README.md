@@ -1,12 +1,15 @@
-# Elephant
-This is an annotation processor to apply Memoization technique to Utils-like classes.
+# What is Elephant?
+Elephant is an annotation processor to apply Memoization to Utility classes.
 
-# What is it good for?
-Memoization is a simple technique that speeds up functions by caching the results. To take advantage of this technique, 
-the result MUST ONLY depend on the input parameters and the time taken to process the result should be longer than just retrieving it.
+# What is Memoization?
+Memoization is a simple technique that speeds up functions by caching the results. 
+To take better advantage of this technique, the result _should depend_ on input 
+parameters, and the time to process the result should take longer than just the 
+time spent retrieving it.
 
-# Usage
-Annotate your Utils class with the `@Elephant` annotation and then every `public` and `static` function you want to memoize with the `@Memoize` annotation
+# How do I use it?
+Annotate your Utilities class with the `@Elephant` annotation, and then every 
+`public` and `static` function you want to memoize with `@Memoize`. That simple.
 
 ````java
 @Elephant
@@ -18,8 +21,9 @@ public class SimpleUtils{
         Matcher matcher = pattern.matcher(fullText.toLowerCase());
         int counter = 0;
 
-        while (matcher.find())
+        while (matcher.find()) {
             counter++;
+        }
 
         return counter;
     }
@@ -30,18 +34,26 @@ public class SimpleUtils{
 }
 ````
 
-After building your project, the annotation processor will generate a class with the name `Elephant+[Name of the class]` (i.e. ElephantSimpleUtils). You can freely use it anywhere in your project now and it will automatically memorize the results for every call.
-For the methods not marked with the `@Memoize` annotation, it will keep calling the same method on the original Utils class. I recommend to build your project every time you make a modification to your original class.
+After building your project, the annotation processor will generate a class aptly 
+named `Elephant+[Name of the class]` (i.e. ElephantSimpleUtils). You can then 
+freely use it anywhere in your project and it will automatically memorize the 
+results for every call.
 
-# Limitations (for now)
+For the methods not marked with the `@Memoize` annotation, it will keep calling 
+the original method on the Utils class. I recommend building your project every 
+time you make a modification to the original class.
 
-* Supports Java 8 and up
+# Limitations _(for now)_
+
+* Only supports Java 8 and up
 * Doesn't support nested classes
 * Support only for wrapper classes (Integer, Float, Double, etc)
 
 # Android 
 
-In case you want to use it in your Android project, you have to enable the `jackOptions` and make sure you're working with Java 8 (Building time could take a while to generate the Elephant class)
+In case you want to use it in your Android project, you have to enable 
+`jackOptions` and make sure you're working with Java 8 (It may take a while to 
+build the Elephant class).
 
 ````gradle
 android {
@@ -71,7 +83,8 @@ dependencies{
 }
 ````
 
-This is project is currently in development and you are welcome to contribute to make it better.
+This project is currently in development. You are more than welcome to contribute
+and make it better.
 
 # License 
 ````
